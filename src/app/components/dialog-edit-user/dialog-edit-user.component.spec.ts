@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
-import { DialogEditAddressComponent } from './dialog-edit-address.component';
+import { DialogEditUserComponent } from './dialog-edit-user.component';
 
-describe('DialogEditAddressComponent', () => {
-  let component: DialogEditAddressComponent;
-  let fixture: ComponentFixture<DialogEditAddressComponent>;
+describe('DialogEditUserComponent', () => {
+  let component: DialogEditUserComponent;
+  let fixture: ComponentFixture<DialogEditUserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ MatDialogRef ],
-      declarations: [ DialogEditAddressComponent ],
-      providers: [ MatDialogModule,MatDialogRef ]
+      declarations: [ DialogEditUserComponent ],
+      providers: [ MatDialogModule, MatDialogRef ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DialogEditAddressComponent);
+    fixture = TestBed.createComponent(DialogEditUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

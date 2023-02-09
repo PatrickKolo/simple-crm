@@ -1,0 +1,62 @@
+.container {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-card {
+        display: flex;
+        width: 600px;
+        position: relative;
+        padding: 36px;
+
+        mat-progress-bar {
+            position: absolute;
+            left: 0px;
+            top: 4px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            .button-container {
+                display: flex;
+                align-items: center;
+
+                span {
+                    margin-left: 16px;
+                    margin-right: 16px;
+                }
+            }
+
+
+            span {
+                margin-right: 16px;
+                cursor: pointer;
+                
+            }
+        }
+
+        .alternate {
+            font-style: italic;
+            margin-top: 16px;
+            font-size: 12px;
+            cursor: pointer;
+
+            span{
+                color: blue;
+            }
+        }
+    }
+}
+
+.mat-card-content{
+    width: 80%;
+}
+
+
+.logo-container{
+    padding-right: 25px;
+}

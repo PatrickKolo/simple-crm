@@ -7,11 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserComponent } from './user/user.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { UserComponent } from './components/user/user.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,10 +26,18 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
-import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
-import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
+import { DialogAddUserComponent } from './components/dialog-add-user/dialog-add-user.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { DialogEditAddressComponent } from './components/dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserComponent } from './components/dialog-edit-user/dialog-edit-user.component';
+import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 @NgModule({
   declarations: [
@@ -40,12 +47,18 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
     DialogAddUserComponent,
     UserDetailComponent,
     DialogEditAddressComponent,
-    DialogEditUserComponent
+    DialogEditUserComponent,
+    ErrorDialogComponent,
+    ForgotPasswordComponent,
+    LoginComponent,
+    SignInComponent,
+    VerifyEmailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    // Angulr Material - START 
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
@@ -56,6 +69,11 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressBarModule,
+    MatCardModule,
+    MatMenuModule,
+    MatGridListModule,
+    // Angular Material - END
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -63,9 +81,7 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     AngularFirestoreModule,
-    MatProgressBarModule,
-    MatCardModule,
-    MatMenuModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,16 +1,23 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserComponent } from './user/user.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { UserComponent } from './components/user/user.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { AuthGuard } from './components/shared/guard/auth.guard';
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent },
-  {path: 'dashboard', component: DashboardComponent },
-  {path: 'user', component: UserComponent },
-  {path: 'user/:id', component: UserDetailComponent }
-
-
+  {path: '', redirectTo: '/login', pathMatch: 'full' },
+  {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
+  {path: 'user', component: UserComponent, canActivate:[AuthGuard]},
+  {path: 'user/:id', component: UserDetailComponent, canActivate:[AuthGuard]},
+  {path: 'login', component: LoginComponent},
+  {path: 'signin', component: SignInComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'veryfy-email', component: VerifyEmailComponent}
 ];
 
 @NgModule({

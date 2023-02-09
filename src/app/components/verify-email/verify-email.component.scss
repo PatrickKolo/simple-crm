@@ -1,0 +1,39 @@
+.container {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-card {
+        width: 400px;
+
+        mat-card-content {
+            display: flex;
+            flex-direction: column;
+
+           .button-container {
+            display: flex;
+            align-items: center;
+
+            span {
+                margin-left: 16px;
+                margin-right: 16px;
+            }
+           }
+
+           .alternate {
+            font-style: italic;
+            font-size: 12px;
+            margin-top: 16px;
+
+            span {
+                margin-right: 16px;
+                cursor: pointer;
+            }
+           }
+        }
+    }
+
+
+}
