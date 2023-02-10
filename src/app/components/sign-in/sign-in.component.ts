@@ -30,7 +30,7 @@ export class SignInComponent implements OnInit {
 
   async signupUser() {
     this.loading = true;
-    await this.authService.SignUp(this.signupForm.value.userEmail, this.signupForm.value.userPwd)
+    await this.authService.SignUp(this.signupForm.value.userName, this.signupForm.value.userEmail, this.signupForm.value.userPwd)
     this.loading = false;
   }
 

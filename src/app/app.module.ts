@@ -39,6 +39,8 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DialogGuestUserComponent } from './components/dialog-guest-user/dialog-guest-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 
@@ -77,6 +79,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatMenuModule,
     MatGridListModule,
+    MatChipsModule,
+    MatButtonToggleModule,
     // Angular Material - END
     FormsModule,
     ReactiveFormsModule,

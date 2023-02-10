@@ -2,8 +2,8 @@
     <mat-card>
         <mat-progress-bar class="bar" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
         <div class="logo-container" style="margin-bottom: 16px;">
-            <img  src="assets/img/logo-scrm.png" routerLink="/login">
-          </div>
+            <img src="assets/img/logo-scrm.png" routerLink="/login">
+        </div>
         <mat-card-content>
             <h2>Login as guest</h2>
             <form #loginForm="ngForm" (ngSubmit)="loginGuest()">
@@ -14,14 +14,21 @@
                 </mat-form-field>
 
                 <div class="button-container">
-                    <button mat-raised-button value="Log in" type="submit" [disabled]="loginForm.invalid">Log in as Guest</button>
-        
+                    <button mat-raised-button value="Log in" type="submit" [disabled]="loginForm.invalid">Log in as
+                        Guest</button>
+
                 </div>
             </form>
-            <div class="alternate">
+            <!-- <div class="alternate">
                 <span routerLink="/forgot-password">Forgot Password</span>
                 <span class="redirect" routerLink="/signin"> Sign Up</span>
-              </div>
+              </div> -->
+            <div class="navigation-container">
+                <mat-button-toggle-group name="favoriteColor">
+                    <mat-button-toggle value="red" routerLink="/forgot-password">Login</mat-button-toggle>
+                    <mat-button-toggle value="green" routerLink="/signin">Sign Up</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
         </mat-card-content>
     </mat-card>
 

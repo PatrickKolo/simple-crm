@@ -9,8 +9,6 @@ import { AuthService } from "../shared/services/auth.service";
   styleUrls: ['./dialog-guest-user.component.scss']
 })
 export class DialogGuestUserComponent implements OnInit {
-
-  
   hide = true;
   loading = false;
 
@@ -27,7 +25,4 @@ export class DialogGuestUserComponent implements OnInit {
       this.loading = false
     }
   
-
-  
-
 }

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from 'src/app/components/dialog-add-user/dialog-add-user.component';
 import { ErrorDialogComponent } from 'src/app/components/error-dialog/error-dialog.component';
+import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,8 @@ export class AuthService {
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    private firestoreService: FirestoreService,
   ) {
 
 
@@ -64,9 +66,9 @@ export class AuthService {
         });
       })
       .catch((error) => {
-        this.dialog.open(ErrorDialogComponent, {data: error})
+        this.dialog.open(ErrorDialogComponent, { data: error })
       });
-      
+
   }
 
 
@@ -77,15 +79,17 @@ export class AuthService {
    * @param password 
    * @returns 
    */
-  SignUp(email: string, password: string) {
+  SignUp(displayName: string, email: string, password: string) {
+
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
+        this.changeDisplayName(displayName);
         this.SendVerificationMail();
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        this.dialog.open(ErrorDialogComponent, {data: error})
+        this.dialog.open(ErrorDialogComponent, { data: error })
       });
   }
   // Send email verfificaiton when new user sign up
@@ -96,7 +100,7 @@ export class AuthService {
         this.router.navigate(['veryfy-email']);
       });
   }
-  
+
 
   /**
    * Reset Forggot password
@@ -111,15 +115,31 @@ export class AuthService {
         window.alert('Password reset email sent, check your inbox.');
       })
       .catch((error) => {
-        this.dialog.open(ErrorDialogComponent, {data: error})
+        this.dialog.open(ErrorDialogComponent, { data: error })
       });
   }
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    return (user !== null) && (this.checkEmailVerification() !== false) ? true : false;
   }
-  
+
+/**
+   * Checks if the user is a guest, if yes no email verification is needed
+   * @returns true || false
+   */
+checkEmailVerification() {
+  const user = JSON.parse(localStorage.getItem('user')!);
+
+  if (this.loginAsGuest) {
+    return true;
+  } else if (user.emailVerified) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 
   /**
    * Sign in with Google
@@ -144,7 +164,7 @@ export class AuthService {
       });
   }
 
- 
+
   /**
    * Setting up user data when sign in with username/password,sign up with username/password and sign in with social authprovider in Firestore database using AngularFirestore + AngularFirestoreDocument service
    * 
@@ -167,35 +187,29 @@ export class AuthService {
     });
   }
 
+
   /**
    * Creates an anonymous user account in Firebase Authentication and logs in the user
    * @param guestDisplayName The name of the guest user
    */
   guestLogin(guestDisplayName: string) {
     this.loginAsGuest = true;
-
     this.afAuth.signInAnonymously().then((result) => {
-      
-
       this.SetUserData(result.user);
-      //this.changeDisplayName(guestDisplayName);
-
+      this.changeDisplayName(guestDisplayName);
       this.afAuth.onAuthStateChanged(() => {
-        
-          this.router.navigate(['dashboard']);
-      
-
+        console.log('user', this.userData)
+        this.router.navigate(['dashboard']);
       });
-
     })
   }
 
 
-/**
- * Sign out
- * 
- * @returns 
- */
+  /**
+   * Sign out
+   * 
+   * @returns 
+   */
   SignOut() {
     return this.afAuth.signOut().then(() => {
       // this.isLoggedIn = false
@@ -203,6 +217,19 @@ export class AuthService {
       this.router.navigate(['']);
     });
   }
+
+
+  /**
+   * Changes the displayName of the currently logged in user
+   * @param newName String with the new name
+   */
+  changeDisplayName(newName: string) {
+    this.afAuth.currentUser.then((user) => {
+      user!.updateProfile({
+        displayName: newName
+      }).then(() => {
+        this.firestoreService.updateUser(user!.uid);
+      })
+    })
+  }
 }
-
-

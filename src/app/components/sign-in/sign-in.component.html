@@ -3,31 +3,49 @@
         <mat-progress-bar class="bar" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
         <div class="logo-container" style="margin-bottom: 16px;">
             <img src="assets/img/logo-scrm.png" alt="">
-          </div>
+        </div>
         <mat-card-content>
             <h2>Sign Up</h2>
             <form #signupForm="ngForm" (ngSubmit)="signupUser()">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Choose a name" name="userName" ngModel #userName="ngModel" required>
+
+                </mat-form-field>
+
                 <mat-form-field appearance="outline">
                     <mat-label>Email Address</mat-label>
-                    <input matInput placeholder="Email Address" email name="userEmail" ngModel #userEmail="ngModel" required>
+                    <input matInput placeholder="Email Address" email name="userEmail" ngModel #userEmail="ngModel"
+                        required>
                     <mat-error *ngIf="email.invalid">Please enter a valid e-mail<address></address></mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" name="userPwd" ngModel #userPwd="ngModel" minlength="6" required>
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <input matInput [type]="hide ? 'password' : 'text'" name="userPwd" ngModel #userPwd="ngModel"
+                        minlength="6" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                     <mat-error *ngIf="userPwd.invalid">Please use at least 6 characters<address></address></mat-error>
                 </mat-form-field>
                 <div class="button-container">
-                    <button mat-raised-button value="Sign Up" type="submit" [disabled]="signupForm.invalid"
-                    >Register</button>
+                    <button mat-raised-button value="Sign Up" type="submit"
+                        [disabled]="signupForm.invalid">Register</button>
                 </div>
             </form>
-            <div class="alternate">
+            <!-- <div class="alternate">
                 <span class="redirect" routerLink="/login"> Log In</span>
-              </div>
+              </div> -->
+
+            <div class="navigation-container">
+                <mat-button-toggle-group name="favoriteColor">
+                    <mat-button-toggle value="red" routerLink="/login">Login</mat-button-toggle>
+                    <mat-button-toggle value="green" routerLink="/signin">Sign Up</mat-button-toggle>
+                    <mat-button-toggle value="blue" routerLink="/dialog-guest">Login as guest</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
         </mat-card-content>
     </mat-card>
 

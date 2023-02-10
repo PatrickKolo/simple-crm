@@ -19,9 +19,18 @@
     }
 }
 
+.card-container{
+    display: flex;
+}
+
+.secondCard{
+    width: 100%;
+}
+
 .thirdCard{
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 
