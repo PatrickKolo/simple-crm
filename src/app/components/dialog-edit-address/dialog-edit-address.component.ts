@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
-import { User } from 'src/models/user.class';
+import { Customer } from 'src/models/customer.class';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 
 @Component({
@@ -10,8 +10,8 @@ import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.compo
   styleUrls: ['./dialog-edit-address.component.scss']
 })
 export class DialogEditAddressComponent implements OnInit {
-  user: User = new User();
-  userId: any;
+  customer: Customer = new Customer();
+  customerId: any;
   loading = false;
   
 
@@ -20,11 +20,11 @@ export class DialogEditAddressComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveUser(){
+  saveCustomer(){
     this.firestore
-    .collection('users')
-    .doc(this.userId)
-    .update(this.user.toJSON())
+    .collection('customers')
+    .doc(this.customerId)
+    .update(this.customer.toJSON())
     .then(() =>{
       this.loading = false;
       this.dialogRef.close()

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from "../shared/services/auth.service";
+import { DialogGuestUserComponent } from "../dialog-guest-user/dialog-guest-user.component";
+
 
 @Component({
   selector: 'app-log-in',

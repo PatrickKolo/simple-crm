@@ -5,10 +5,10 @@
       <th>Mail</th>
       <th>City</th>
     </tr>
-    <tr *ngFor="let user of allUsers" [routerLink]="['/user/' + user['customIdName']]">
-      <td>{{ user['firstName'] }}  {{ user['lastName'] }}</td>
-      <td>{{ user['email'] }}</td>
-      <td>{{ user['city'] }}</td>
+    <tr *ngFor="let customer of allCustomers" [routerLink]="['/customer/' + customer['customIdName']]">
+      <td>{{ customer['firstName'] }}  {{ customer['lastName'] }}</td>
+      <td>{{ customer['email'] }}</td>
+      <td>{{ customer['city'] }}</td>
     </tr>
 
   </table>

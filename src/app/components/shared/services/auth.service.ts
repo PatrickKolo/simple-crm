@@ -16,6 +16,10 @@ import { ErrorDialogComponent } from 'src/app/components/error-dialog/error-dial
 })
 export class AuthService {
   userData: any; // Save logged in user data
+  loginAsGuest: boolean = false;
+  newDisplayName: string = '';
+
+
   constructor(
     public dialog: MatDialog,
     public afs: AngularFirestore, // Inject Firestore service
@@ -163,6 +167,29 @@ export class AuthService {
     });
   }
 
+  /**
+   * Creates an anonymous user account in Firebase Authentication and logs in the user
+   * @param guestDisplayName The name of the guest user
+   */
+  guestLogin(guestDisplayName: string) {
+    this.loginAsGuest = true;
+
+    this.afAuth.signInAnonymously().then((result) => {
+      
+
+      this.SetUserData(result.user);
+      //this.changeDisplayName(guestDisplayName);
+
+      this.afAuth.onAuthStateChanged(() => {
+        
+          this.router.navigate(['dashboard']);
+      
+
+      });
+
+    })
+  }
+
 
 /**
  * Sign out
@@ -177,3 +204,5 @@ export class AuthService {
     });
   }
 }
+
+

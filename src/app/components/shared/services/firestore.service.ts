@@ -7,7 +7,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class FirestoreService {
-
+  // customerToAdd: User = new User();
 
   constructor(
     private firestore: AngularFirestore,

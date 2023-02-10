@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/models/user.class';
+import { Customer } from 'src/models/customer.class';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
@@ -14,8 +14,8 @@ import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.co
 })
 export class UserDetailComponent implements OnInit {
 
-  userId: any = '';
-  user: User = new User();
+  customerId: any = '';
+  customer: Customer = new Customer();
 
 
   constructor(public dialog: MatDialog,
@@ -26,36 +26,36 @@ export class UserDetailComponent implements OnInit {
 
 
     this.route.paramMap.subscribe(paramMap => {
-      this.userId = paramMap.get('id');
-      console.log('got Id ', this.userId);
-      this.getUser();
+      this.customerId = paramMap.get('id');
+      console.log('got Id ', this.customerId);
+      this.getCustomer();
     })
   }
 
 
-  getUser() {
+  getCustomer() {
     this.firestore
-      .collection('users')
-      .doc(this.userId)
+      .collection('customers')
+      .doc(this.customerId)
       .valueChanges()
-      .subscribe((user: any) => {
-        this.user = new User(user);
-        console.log('retrieved user', this.user)
+      .subscribe((customer: any) => {
+        this.customer = new Customer(customer);
+        console.log('retrieved customer', this.customer)
       })
   }
 
 
   editMenu() {
     const dialog = this.dialog.open(DialogEditAddressComponent)
-    dialog.componentInstance.user = new User(this.user.toJSON());
-    dialog.componentInstance.userId = this.userId;
+    dialog.componentInstance.customer = new Customer(this.customer.toJSON());
+    dialog.componentInstance.customerId = this.customerId;
   }
 
 
-  editUserDetail() {
+  editCustomerDetail() {
     const dialog = this.dialog.open(DialogEditUserComponent)
-    dialog.componentInstance.user = new User(this.user.toJSON());
-    dialog.componentInstance.userId = this.userId;
+    dialog.componentInstance.customer = new Customer(this.customer.toJSON());
+    dialog.componentInstance.customerId = this.customerId;
   }
 }
 

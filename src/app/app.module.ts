@@ -11,7 +11,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserComponent } from './components/user/user.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -36,7 +36,10 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { LoginComponent } from './components/login/login.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { DialogGuestUserComponent } from './components/dialog-guest-user/dialog-guest-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -53,6 +56,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     LoginComponent,
     SignInComponent,
     VerifyEmailComponent,
+    DialogGuestUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +79,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatGridListModule,
     // Angular Material - END
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
@@ -83,7 +88,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
     AngularFirestoreModule,
 
   ],
-  providers: [],
+  providers: [
+    { provide: MatDialogRef,
+      useValue: {}
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

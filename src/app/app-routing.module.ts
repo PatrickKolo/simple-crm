@@ -8,16 +8,19 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AuthGuard } from './components/shared/guard/auth.guard';
+import { DialogGuestUserComponent } from './components/dialog-guest-user/dialog-guest-user.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full' },
   {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path: 'user', component: UserComponent, canActivate:[AuthGuard]},
-  {path: 'user/:id', component: UserDetailComponent, canActivate:[AuthGuard]},
+  {path: 'customer/:id', component: UserDetailComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'signin', component: SignInComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'veryfy-email', component: VerifyEmailComponent}
+  {path: 'veryfy-email', component: VerifyEmailComponent},
+  {path: 'dialog-guest', component: DialogGuestUserComponent}
+
 ];
 
 @NgModule({
