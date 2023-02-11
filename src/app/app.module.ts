@@ -41,6 +41,7 @@ import { DialogGuestUserComponent } from './components/dialog-guest-user/dialog-
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { DialogDeleteCustomerComponent } from './components/dialog-delete-customer/dialog-delete-customer.component';
 
 
 
@@ -59,6 +60,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     SignInComponent,
     VerifyEmailComponent,
     DialogGuestUserComponent,
+    DialogDeleteCustomerComponent,
   ],
   imports: [
     BrowserModule,

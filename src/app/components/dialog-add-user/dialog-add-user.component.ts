@@ -23,7 +23,7 @@ export class DialogAddUserComponent implements OnInit {
 
   saveCustomer() {
     this.customer.birthDate = this.birthDate.getTime();
-    console.log('Current Customer', this.customer)
+   // console.log('Current Customer', this.customer)
     this.loading = true;
 
 
@@ -32,7 +32,7 @@ export class DialogAddUserComponent implements OnInit {
       .add(this.customer.toJSON())
       .then((result: any) => {
         this.loading = false;
-        console.log('Adding customer finished', result)
+       // console.log('Adding customer finished', result)
         this.dialogRef.close();
       });
 

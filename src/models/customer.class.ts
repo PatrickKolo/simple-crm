@@ -6,6 +6,7 @@ export class Customer {
     street: string;
     zipCode: number;
     city: string;
+    customersId: string;
 
 
     constructor(obj?: any){
@@ -16,6 +17,7 @@ export class Customer {
         this.street = obj ? obj.street : '';
         this.zipCode = obj ? obj.zipCode : '';
         this.city = obj ? obj.city : '';
+        this.customersId = obj ? obj.customerId : '';
 
     }
 
@@ -29,7 +31,8 @@ export class Customer {
             birthDate: this.birthDate,
             street: this.street,
             zipCode: this.zipCode,
-            city: this.city
+            city: this.city,
+            customersId: this.customersId
 
         };
     }

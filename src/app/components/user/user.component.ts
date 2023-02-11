@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
     .collection('customers')
     .valueChanges({idField: 'customIdName'})
     .subscribe((changes:any) =>{
-      console.log('Received changes from DB', changes);
+     // console.log('Received changes from DB', changes);
       this.allCustomers = changes;
     });
   }
