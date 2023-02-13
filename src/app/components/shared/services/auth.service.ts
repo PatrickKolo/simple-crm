@@ -198,7 +198,7 @@ checkEmailVerification() {
       this.SetUserData(result.user);
       this.changeDisplayName(guestDisplayName);
       this.afAuth.onAuthStateChanged(() => {
-        console.log('user', this.userData)
+       // console.log('user', this.userData)
         this.router.navigate(['dashboard']);
       });
     })

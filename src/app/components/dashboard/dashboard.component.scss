@@ -30,11 +30,9 @@
 
 .secondCard{
     width: 100%;
-
 }
 
 .context p{
-    
     font-size: 38px !important;
 }
 
@@ -48,8 +46,7 @@
 
 mat-grid-tile-content{
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;   
 }
 
 .tile1 {
@@ -64,6 +61,8 @@ mat-grid-tile-content{
     font-size: 28px !important;
     font-family: 700 !important;
     padding: 15px;
+}
 
-
+.logo-container img{
+    height: 110px;
 }
