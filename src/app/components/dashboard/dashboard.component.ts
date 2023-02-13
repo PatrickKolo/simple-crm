@@ -4,6 +4,7 @@ import { FirestoreService } from 'src/app/components/shared/services/firestore.s
 import { User } from 'src/models/user.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserComponent } from '../user/user.component';
+import { Customer } from 'src/models/customer.class';
 
 
 @Component({
@@ -12,6 +13,9 @@ import { UserComponent } from '../user/user.component';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  customer = new Customer();
+  allCustomers = [];
 
 
  
@@ -32,6 +36,13 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.firestore
+    .collection('customers')
+    .valueChanges({idField: 'customIdName'})
+    .subscribe((changes:any) =>{
+      console.log('allCustomers', this.allCustomers);
+      this.allCustomers = changes;
+    });
   }
 
 
@@ -40,13 +51,13 @@ export class DashboardComponent implements OnInit {
     if (this.hours < 10) {
       this.msg = "Good Morning"
     } else if (this.hours < 16) {
-      this.msg = "Good Afternoon"
+      this.msg = "Good Day"
     } else if (this.hours < 19) {
       this.msg = "Good Evening"
     } else if (this.hours < 24) {
       this.msg = "Good Night"
     } else if (this.hours < 6) {
-      this.msg = "Sleep lah"
+      this.msg = "Good Night"
     }
   }
   firebaseSusbscribing() {

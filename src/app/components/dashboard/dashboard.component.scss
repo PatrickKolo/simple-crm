@@ -6,12 +6,12 @@
 
 .card {
     background: #3f51b5;
-    border-radius: 8px;
+    border-radius: 14px;
     display: flex;
     flex-direction: column;
     color: white;
-    margin: 5px;
-    padding: 50px;
+    margin: 10px;
+    padding: 25px;
 
 }
 
@@ -28,18 +28,53 @@
     display: flex;
 }
 
+
 .secondCard{
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
 }
 
+
 .context p{
-    font-size: 38px !important;
+    font-size: 25px !important;
+    display: flex;
+    align-items: center;
 }
+
 
 .thirdCard{
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 33%;
+}
+
+
+.fourthCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 33%;
+    .CustomerAmount{
+        font-size: 22px !important;
+        font-family: 700 !important;
+        p{
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    } 
+}
+
+.number{
+    font-size: 55px;
+}
+
+.greeting-box{
+    p{
+        padding-top: 15px;
+    }
 }
 
 
@@ -65,4 +100,16 @@ mat-grid-tile-content{
 
 .logo-container img{
     height: 110px;
+}
+
+@media (max-width: 1310px) {
+
+    .context{
+        padding: 0;
+    }
+
+    .context p{
+    font-size:30px !important;
+}
+
 }
