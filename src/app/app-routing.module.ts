@@ -9,6 +9,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AuthGuard } from './components/shared/guard/auth.guard';
 import { DialogGuestUserComponent } from './components/dialog-guest-user/dialog-guest-user.component';
+import { ImprintComponent } from './components/imprint/imprint.component';
+import { NotesComponent } from './components/notes/notes.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -19,7 +21,10 @@ const routes: Routes = [
   {path: 'signin', component: SignInComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'veryfy-email', component: VerifyEmailComponent},
-  {path: 'dialog-guest', component: DialogGuestUserComponent}
+  {path: 'dialog-guest', component: DialogGuestUserComponent},
+  {path: 'imprint', component: ImprintComponent},
+  {path: 'notes', component: NotesComponent},
+  
 
 ];
 

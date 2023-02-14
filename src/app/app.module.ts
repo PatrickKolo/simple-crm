@@ -42,6 +42,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { DialogDeleteCustomerComponent } from './components/dialog-delete-customer/dialog-delete-customer.component';
+import { DialogAccountDetailsComponent } from './components/dialog-account-details/dialog-account-details.component';
+import { DialogEditAccountComponent } from './components/dialog-edit-account/dialog-edit-account.component';
+import { DialogDeleteAccountComponent } from './components/dialog-delete-account/dialog-delete-account.component';
+import { ImprintComponent } from './components/imprint/imprint.component';
+import { NotesComponent } from './components/notes/notes.component';
+import { DialogAddNoteComponent } from './components/dialog-add-note/dialog-add-note.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -61,6 +68,12 @@ import { DialogDeleteCustomerComponent } from './components/dialog-delete-custom
     VerifyEmailComponent,
     DialogGuestUserComponent,
     DialogDeleteCustomerComponent,
+    DialogAccountDetailsComponent,
+    DialogEditAccountComponent,
+    DialogDeleteAccountComponent,
+    ImprintComponent,
+    NotesComponent,
+    DialogAddNoteComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +96,7 @@ import { DialogDeleteCustomerComponent } from './components/dialog-delete-custom
     MatGridListModule,
     MatChipsModule,
     MatButtonToggleModule,
+    MatExpansionModule,
     // Angular Material - END
     FormsModule,
     ReactiveFormsModule,

@@ -17,8 +17,6 @@ export class DashboardComponent implements OnInit {
   customer = new Customer();
   allCustomers = [];
 
-
- 
   title = 'clock-greets';
   time: any;
   hours: any;
@@ -40,12 +38,16 @@ export class DashboardComponent implements OnInit {
     .collection('customers')
     .valueChanges({idField: 'customIdName'})
     .subscribe((changes:any) =>{
-      console.log('allCustomers', this.allCustomers);
+      //console.log('allCustomers', this.allCustomers);
       this.allCustomers = changes;
     });
   }
 
 
+/**
+ * shows the greeting text depending on the time
+ * 
+ */
   decide() {
     this.hours = new Date().getHours();
     if (this.hours < 10) {

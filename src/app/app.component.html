@@ -1,28 +1,55 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
   <mat-drawer #drawer class="sidenav" mode="side" [opened]="authService.isLoggedIn && true">
     <div class="logo-container">
-    <img class="logo" src="./assets/img/logo-scrm.png" alt="">
-  </div>
+      <img class="logo" src="./assets/img/logo-scrm.png" alt="">
+    </div>
 
-  <ul class="menu-items">
-    <li routerLink="/dashboard"><mat-icon>fact_check</mat-icon> Dashboard</li>
-    <li routerLink="/user"><mat-icon>perm_identity</mat-icon>Customer</li>
-    <li routerLink="login" (click)="authService.SignOut()"><mat-icon>logout</mat-icon>Logout</li>
-  </ul>
+    <ul class="menu-items">
+      <li routerLink="/dashboard"><mat-icon>fact_check</mat-icon> Dashboard</li>
+      <li routerLink="/user"><mat-icon>perm_identity</mat-icon>Customer</li>
+      <li routerLink="notes" ><mat-icon>checklist</mat-icon>Notes</li>
+      <li routerLink="imprint" ><mat-icon>policy</mat-icon>Imprint</li>
+      <li routerLink="login" (click)="authService.SignOut()"><mat-icon>logout</mat-icon>Logout</li>
+    </ul>
   </mat-drawer>
 
   <div class="example-sidenav-content">
     <mat-toolbar color="primary" *ngIf="this.authService.isLoggedIn === true">
       <mat-toolbar-row>
-        <mat-icon class="menu-icon" (click)="drawer.toggle()">menu</mat-icon>
-        <span>Simple CRM</span>
+        <div class="toolbar-left">
+          <mat-icon class="menu-icon" (click)="drawer.toggle()">menu</mat-icon>
+          <span>Simple CRM</span>
+        </div>
+
+        <div class="toolbar-right" *ngIf="authService.userData as user">
+          <span>{{ user.displayName }}</span>
+          <button mat-button [matMenuTriggerFor]="menu" title="User profile">
+            <img class="profile-picture" src="./assets/img/blank-user.png" />
+          </button>
+          <mat-menu #menu="matMenu">
+            <button (click)="this.openUserDetailsDialog()" mat-menu-item>
+              <mat-icon>person</mat-icon>
+              <span>Show User Details</span>
+            </button>
+            <button (click)="this.openEditUserDialog()" mat-menu-item>
+              <mat-icon>edit</mat-icon>
+              <span>Edit User</span></button>
+            <button (click)="this.authService.SignOut()" mat-menu-item>
+              <mat-icon>logout</mat-icon>
+              <span>Log Out</span>
+            </button>
+          </mat-menu>
+        </div>
+
       </mat-toolbar-row>
     </mat-toolbar>
+
+
 
     <div class="router-container">
       <router-outlet></router-outlet>
     </div>
-  
+
 
   </div>
 </mat-drawer-container>

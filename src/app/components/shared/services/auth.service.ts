@@ -18,6 +18,7 @@ import { FirestoreService } from './firestore.service';
 export class AuthService {
   userData: any; // Save logged in user data
   loginAsGuest: boolean = false;
+  authProcessing: boolean = false;
   newDisplayName: string = '';
 
 
@@ -232,4 +233,23 @@ checkEmailVerification() {
       })
     })
   }
+
+
+ /**
+   * Deletes the currently logged in user
+   */
+ deleteUser() {
+  this.authProcessing = true;
+
+  this.afAuth.currentUser.then((user) => {
+    this.firestoreService.deleteUser(user!.uid); // Delete the user from firestore
+    user!.delete().then(() => {
+      this.authProcessing = false;
+
+      this.router.navigate(['']).then(() => {
+        window.location.reload();
+      });
+    }).catch((error) => {});
+  }).catch((error) => {});
+}
 }

@@ -28,6 +28,10 @@ export class UserComponent implements OnInit {
     });
   }
 
+
+  /**
+   * opens die Dialog for adding a new customer
+   */
   openDialog() {
     this.dialog.open(DialogAddUserComponent);
 
