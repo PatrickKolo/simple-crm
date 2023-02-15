@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, Injector } from '@angular/core';
 import { User } from '../services/user';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -148,11 +148,16 @@ checkEmailVerification() {
    * @returns 
    */
   GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+    return this.AuthLogin(new auth.GoogleAuthProvider()).then(() => {
       this.router.navigate(['dashboard']);
     });
   }
-  // Auth logic to run auth providers
+
+
+  /**
+   * Auth logic to run auth providers
+   *  
+   */
   AuthLogin(provider: any) {
     return this.afAuth
       .signInWithPopup(provider)
@@ -198,11 +203,12 @@ checkEmailVerification() {
     this.afAuth.signInAnonymously().then((result) => {
       this.SetUserData(result.user);
       this.changeDisplayName(guestDisplayName);
-      this.afAuth.onAuthStateChanged(() => {
-       // console.log('user', this.userData)
-        this.router.navigate(['dashboard']);
-      });
-    })
+      this.afAuth.authState.subscribe((user) => {
+        if (user) {
+            this.router.navigate(['dashboard']);
+          }
+        })
+    }).catch(error => console.error(error))
   }
 
 

@@ -47,7 +47,7 @@ export class NotesComponent implements OnInit {
       .collection('notes')
       .valueChanges({ idField: 'customIdName' })
       .subscribe((changes: any) => {
-       //  console.log('allNotes', changes);
+         console.log('allNotes', changes);
         this.allNotes = changes;
       });
   }

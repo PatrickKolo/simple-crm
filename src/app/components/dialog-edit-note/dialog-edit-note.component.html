@@ -20,7 +20,7 @@
       
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Date</mat-label>
-                <input [disabled]="loading"   matInput placeholder="Date" [matDatepicker]="picker1">
+                <input [disabled]="loading" [(ngModel)] = "notes.date"   matInput placeholder="Date" [matDatepicker]="picker1">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
                 <!-- <mat-hint>Please enter a date</mat-hint> -->
@@ -30,6 +30,6 @@
     </div>
     <div mat-dialog-actions>
         <button  mat-button (click)="dialogRef.close()">Cancel</button>
-        <button mat-button (click)="saveCustomer()" cdkFocusInitial>Save</button>
+        <button mat-button (click)="saveNote()" cdkFocusInitial>Save</button>
     </div>
     </div>

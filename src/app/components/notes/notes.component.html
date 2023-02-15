@@ -15,7 +15,7 @@
         </button>
     
         <mat-menu #CustomerMenu="matMenu">
-            <button mat-menu-item (click)="editMenu()">Edit</button>
+            <button mat-menu-item [routerLink]="['/notes/' + notes['customIdName']]" >Edit</button>
             <button mat-menu-item (click)="openDeleteNoteDialog()">Delete</button>
     
         </mat-menu>
