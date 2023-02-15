@@ -23,18 +23,16 @@ export class UserDetailComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private route: ActivatedRoute,
     private firestore: AngularFirestore,
-    public firestoreService: FirestoreService,
-    ) { 
-
-      this.getCustomerIdFromURL();
-    }
+    public firestoreService: FirestoreService,) {
+    this.getCustomerIdFromURL();
+  }
 
   ngOnInit(): void {
 
 
     this.route.paramMap.subscribe(paramMap => {
       this.customersId = paramMap.get('id');
-      //console.log('got Id ', this.customersId);
+      console.log('got Id ', this.customersId);
       this.getCustomer();
     })
   }
@@ -51,7 +49,7 @@ export class UserDetailComponent implements OnInit {
       })
   }
 
-  
+
   /**
    * Fetches the customerId from the URL parameter and stores it in the variable customerId
    */
@@ -78,12 +76,12 @@ export class UserDetailComponent implements OnInit {
   }
 
 
- /**
-   * Opens the customer delete dialog
-   */
- openDeleteCustomerDialog() {
-  this.dialog.open(DialogDeleteCustomerComponent);
-}
+  /**
+    * Opens the customer delete dialog
+    */
+  openDeleteCustomerDialog() {
+    this.dialog.open(DialogDeleteCustomerComponent);
+  }
 }
 
 

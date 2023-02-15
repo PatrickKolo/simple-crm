@@ -1,0 +1,13 @@
+<div class="dialog-wrapper">
+    <div class="mat-dialog-header">
+        <i class="material-icons">delete</i>
+        <h1 mat-dialog-title>Delete Note</h1>
+    </div>
+    <div mat-dialog-content>
+        <p>Are you sure you wan't to delete this note?</p>
+    </div>
+    <div mat-dialog-actions>
+        <button (click)="this.dialogRef.close()" mat-button title="Cancel">Cancel</button>
+        <button (click)="this.deleteCustomer()" color="warn" mat-button cdkFocusInitial title="Delete">Delete</button>
+    </div>
+</div>

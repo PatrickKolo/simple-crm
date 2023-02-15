@@ -49,6 +49,8 @@ import { ImprintComponent } from './components/imprint/imprint.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { DialogAddNoteComponent } from './components/dialog-add-note/dialog-add-note.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { DialogEditNoteComponent } from './components/dialog-edit-note/dialog-edit-note.component';
+import { DialogDeleteNoteComponent } from './components/dialog-delete-note/dialog-delete-note.component';
 
 
 
@@ -74,6 +76,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ImprintComponent,
     NotesComponent,
     DialogAddNoteComponent,
+    DialogEditNoteComponent,
+    DialogDeleteNoteComponent,
   ],
   imports: [
     BrowserModule,

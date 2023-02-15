@@ -1,7 +1,8 @@
-<mat-accordion *ngFor="let notes of allNotes" [routerLink]="['/notes/' + notes['customIdName']]">
+<div class="main-container">
+<mat-accordion class="all-notes-container" *ngFor="let notes of allNotes" >
     <mat-expansion-panel class="note" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
-            <mat-panel-title>
+            <mat-panel-title class="note-title">
                 {{ notes['title'] }}
             </mat-panel-title>
             <mat-panel-description>
@@ -14,12 +15,13 @@
         </button>
     
         <mat-menu #CustomerMenu="matMenu">
-            <button mat-menu-item (click)="editNote()">Edit</button>
+            <button mat-menu-item (click)="editMenu()">Edit</button>
             <button mat-menu-item (click)="openDeleteNoteDialog()">Delete</button>
     
         </mat-menu>
     </mat-expansion-panel>
 </mat-accordion>
+</div>
 
 <button (click)="openDialogAddNote()" class="add-user-button" mat-fab color="primary" matTooltip="Add a new note">
     <mat-icon>add</mat-icon>

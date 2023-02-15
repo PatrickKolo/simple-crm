@@ -2,6 +2,7 @@ export class Note {
     title: string;
     description: string;
     date: number;
+    notesId: string;
    
 
 
@@ -9,6 +10,7 @@ export class Note {
         this.title = obj ? obj.title : '';
         this.description = obj ? obj.description : '';
         this.date = obj ? obj.date : '';
+        this.notesId = obj ? obj.note : '';
     }
 
 
@@ -16,7 +18,8 @@ export class Note {
         return {
             title: this.title,
             description: this.description,
-            date: this.date  
+            date: this.date,
+            notesId: this.notesId  
         };
     }
 }

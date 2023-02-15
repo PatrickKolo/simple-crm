@@ -1,3 +1,10 @@
+.main-container{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
 .add-user-button{
     position: absolute;
     right: 56px;
@@ -11,5 +18,17 @@
 }
 
 .note{
-    margin: 5px;
+    margin: 18px;
+    width: 350px;
+   min-height: 100px;
+}
+
+.all-notes-container{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.note-title{
+    font-weight: 500;
 }

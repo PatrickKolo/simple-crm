@@ -64,6 +64,11 @@ mat-toolbar, mat-toolbar-row {
 
 }
 
+.toolbar-left{
+    display: flex;
+    align-items: center;
+}
+
 .toolbar-right {
     display: flex;
     align-items: center;

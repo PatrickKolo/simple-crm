@@ -5,6 +5,8 @@ import { User } from 'src/models/user.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserComponent } from '../user/user.component';
 import { Customer } from 'src/models/customer.class';
+import { Note } from 'src/models/notes.class';
+
 
 
 @Component({
@@ -16,6 +18,9 @@ export class DashboardComponent implements OnInit {
 
   customer = new Customer();
   allCustomers = [];
+
+  notes = new Note();
+  allNotes = [];
 
   title = 'clock-greets';
   time: any;
@@ -40,6 +45,15 @@ export class DashboardComponent implements OnInit {
     .subscribe((changes:any) =>{
       //console.log('allCustomers', this.allCustomers);
       this.allCustomers = changes;
+    });
+
+
+    this.firestore
+    .collection('notes')
+    .valueChanges({idField: 'customIdName'})
+    .subscribe((changes:any) =>{
+      //console.log('allCustomers', this.allCustomers);
+      this.allNotes = changes;
     });
   }
 

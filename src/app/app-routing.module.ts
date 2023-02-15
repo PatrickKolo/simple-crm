@@ -11,6 +11,7 @@ import { AuthGuard } from './components/shared/guard/auth.guard';
 import { DialogGuestUserComponent } from './components/dialog-guest-user/dialog-guest-user.component';
 import { ImprintComponent } from './components/imprint/imprint.component';
 import { NotesComponent } from './components/notes/notes.component';
+import { DialogEditNoteComponent } from './components/dialog-edit-note/dialog-edit-note.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -24,6 +25,8 @@ const routes: Routes = [
   {path: 'dialog-guest', component: DialogGuestUserComponent},
   {path: 'imprint', component: ImprintComponent},
   {path: 'notes', component: NotesComponent},
+  {path: 'notes/:nId', component: DialogEditNoteComponent},
+
   
 
 ];
