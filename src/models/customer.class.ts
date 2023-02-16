@@ -17,7 +17,7 @@ export class Customer {
         this.street = obj ? obj.street : '';
         this.zipCode = obj ? obj.zipCode : '';
         this.city = obj ? obj.city : '';
-        this.customersId = obj ? obj.customerId : '';
+        this.customersId = obj ? obj.customersId : '';
 
     }
 

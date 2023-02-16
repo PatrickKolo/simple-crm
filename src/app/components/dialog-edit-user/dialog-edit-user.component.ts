@@ -14,7 +14,7 @@ export class DialogEditUserComponent implements OnInit {
   customer = new Customer();
   loading = false;
   birthDate!: Date;
-  customerId: any;
+  customersId: any;
 
   ngOnInit(): void {
   }
@@ -23,7 +23,7 @@ export class DialogEditUserComponent implements OnInit {
     this.loading = true;
     this.firestore
     .collection('customers')
-    .doc(this.customerId)
+    .doc(this.customersId)
     .update(this.customer.toJSON())
     .then(() =>{
       this.loading = false;

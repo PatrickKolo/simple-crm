@@ -2,6 +2,10 @@ mat-form-field {
     width: 100%;
 }
 
+.mat-header-cell{
+    font-size: 18px;
+}
+
 table {
     width: 100%;
     box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
@@ -39,4 +43,10 @@ mat-paginator {
     position: absolute;
     right: 32px;
     bottom: 32px;
+}
+
+.firstName-col{
+    th{
+        font-size: 18px;
+    }
 }

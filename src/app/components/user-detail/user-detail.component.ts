@@ -72,7 +72,7 @@ export class UserDetailComponent implements OnInit {
   editCustomerDetail() {
     const dialog = this.dialog.open(DialogEditUserComponent)
     dialog.componentInstance.customer = new Customer(this.customer.toJSON());
-    dialog.componentInstance.customerId = this.customersId;
+    dialog.componentInstance.customersId = this.customersId;
   }
 
 

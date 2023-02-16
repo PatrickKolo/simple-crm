@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   allCustomers = [];
 
   dataSource!: any;
-  displayedColumns: string[] = ['firstName', 'lastName'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'email'];
   noData: boolean = false;
 
 

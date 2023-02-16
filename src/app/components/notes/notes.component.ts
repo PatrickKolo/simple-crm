@@ -54,18 +54,19 @@ export class NotesComponent implements OnInit {
  
 
 
-  editMenu() {
+  editMenu(notesId: string) {
+    notesId = this.notesId
     const dialog = this.dialog.open(DialogEditNoteComponent)
     dialog.componentInstance.notes = new Note(this.notes.NoteToJSON());
     dialog.componentInstance.notesId = this.notesId;
   }
 
 
-  editNotesDetail() {
-    const dialog = this.dialog.open(DialogEditNoteComponent)
-    dialog.componentInstance.notes = new Note(this.note.NoteToJSON());
-    dialog.componentInstance.notesId = this.notesId;
-  }
+  // editNotesDetail() {
+  //   const dialog = this.dialog.open(DialogEditNoteComponent)
+  //   dialog.componentInstance.notes = new Note(this.note.NoteToJSON());
+  //   dialog.componentInstance.notesId = this.notesId;
+  // }
 
 
   /**

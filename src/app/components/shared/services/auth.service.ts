@@ -93,7 +93,12 @@ export class AuthService {
         this.dialog.open(ErrorDialogComponent, { data: error })
       });
   }
-  // Send email verfificaiton when new user sign up
+
+
+  /**
+   * Send email verfificaiton when new user sign up
+   * 
+   */
   SendVerificationMail() {
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
@@ -125,6 +130,7 @@ export class AuthService {
     return (user !== null) && (this.checkEmailVerification() !== false) ? true : false;
   }
 
+  
   /**
      * Checks if the user is a guest, if yes no email verification is needed
      * @returns true || false
