@@ -1,6 +1,6 @@
 .user-detail-header{
-    min-height: 250px;
-    background-color: #db8649bf;
+    min-height: 120px;
+    background-color: rgb(107,107,107);
     color: white;
     display: flex;
     align-items: flex-end;
@@ -23,15 +23,38 @@
 
     h2{
         margin-bottom: -16px;
+        font-size: 28px;
     }
 }
 
 .user-detail-adress{
     padding-left: 18px;
+
 }
 
 .pin-right-upper-corner{
     position: absolute;
     right: 0;
     top: 0;
+}
+
+.name-container{
+    display: flex;
+    position: relative;
+}
+
+.label{
+    font-weight: 500;
+}
+
+.name{
+    position: absolute;
+    left: 100px;
+}
+
+.delete-icon{
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    cursor: pointer;
 }

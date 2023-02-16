@@ -102,17 +102,15 @@ export class FirestoreService {
       });
   }
 
-  
+
   /**
    * Updates the current user in the firestore
    * Possible changes: displayName || photoURL
    * @param uid The document id from the 'users' collection
    */
   updateUser(uid: string) {
-
     const authService = this.injector.get(AuthService);
     this.userDataObject = new User(authService.userData); // Convert observable into object
-
     this.firestore
       .collection('users')
       .doc(uid)
@@ -138,73 +136,69 @@ export class FirestoreService {
      * @param nid The document id from the 'notes' collection
    */
   updateNotes(nid: string) {
-
-    //const authService = this.injector.get(AuthService);
-    //this.notesDataObject = new Note(authService.notesData); // Convert observable into object
-
     this.firestore
       .collection('notes')
       .doc(nid)
-      .update(this.notesDataObject.toJSON())
+      .update(this.notesDataObject.NoteToJSON())
       .then(() => {
       });
   }
 
 
-/**
- * CRUD => READ
- * 1. Gets the data from the customers collection
- * 2. Updates the local variable customers
- */
-   getAllNotes() {
+  /**
+   * CRUD => READ
+   * 1. Gets the data from the notes collection
+   * 2. Updates the local variable notes
+   */
+  getAllNotes() {
     this.firestore
       .collection('notes')
       .valueChanges({ idField: 'customIdName' })
       .subscribe((changes: any) => {
         this.notes = changes;
       });
-      console.log('currentNotesId',this.currentNotesId)
+    console.log('currentNotesId', this.currentNotesId)
   }
 
 
-/**
-* Assigns an observable with the snapshot of all notes to the variable notesDataSource
-* Needed for the MatTableDataSource
-* The field "id" is only created for opening a notes in the table
-*/
-getAllNotesSnapshot() {
-  this.notesDataSource = this.firestore.collection('notes').snapshotChanges().pipe(
-    map(actions => actions.map(a => {
-      const data = a.payload.doc.data() as Note;
-      const id = a.payload.doc.id;
-      return { id, ...data };
-    }))
-  );
-}
+  /**
+  * Assigns an observable with the snapshot of all notes to the variable notesDataSource
+  * Needed for the MatTableDataSource
+  * The field "id" is only created for opening a notes in the table
+  */
+  getAllNotesSnapshot() {
+    this.notesDataSource = this.firestore.collection('notes').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Note;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+  }
 
 
-/**
- * Fetches the current note from Firestore using the document id
- * @param documentId The unique document id from firestore
- */
-    getCurrentNote(documentId: string) {
-      this.firestore
-        .collection('notes')
-        .doc(documentId)
-        .valueChanges()
-        .subscribe((changes: any) => {
-          this.currentNote = new Note(changes);
-        });
-    }
+  /**
+   * Fetches the current note from Firestore using the document id
+   * @param documentId The unique document id from firestore
+   */
+  getCurrentNote(documentId: string) {
+    this.firestore
+      .collection('notes')
+      .doc(documentId)
+      .valueChanges()
+      .subscribe((changes: any) => {
+        this.currentNote = new Note(changes);
+      });
+  }
 
 
-/**
- * Deletes the notes from the firestore based on the passed notes id
- * @param uid The document id from the 'notes' collection
- */
-    deleteNotes(uid: string) {
-      this.firestore.collection('notes')
-        .doc(uid)
-        .delete();
-    }
+  /**
+   * Deletes the notes from the firestore based on the passed notes id
+   * @param uid The document id from the 'notes' collection
+   */
+  deleteNotes(uid: string) {
+    this.firestore.collection('notes')
+      .doc(uid)
+      .delete();
+  }
 }

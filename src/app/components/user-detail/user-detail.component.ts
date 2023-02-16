@@ -23,7 +23,7 @@ export class UserDetailComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private route: ActivatedRoute,
     private firestore: AngularFirestore,
-    public firestoreService: FirestoreService,) {
+    public firestoreService: FirestoreService) {
     this.getCustomerIdFromURL();
   }
 

@@ -1,21 +1,36 @@
-<mat-card>
-  <table class="user-table">
-    <tr>
-      <th>Name</th>
-      <th>Mail</th>
-      <th>City</th>
-    </tr>
-    <tr *ngFor="let customer of allCustomers" [routerLink]="['/customer/' + customer['customIdName']]">
-      <td>{{ customer['firstName'] }}  {{ customer['lastName'] }}</td>
-      <td>{{ customer['email'] }}</td>
-      <td>{{ customer['city'] }}</td>
-    </tr>
+<mat-form-field *ngIf="!this.noData" appearance="fill">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Filter by name" #input>
+</mat-form-field>
 
-  </table>
+<table *ngIf="!this.noData" mat-table [dataSource]="this.dataSource" matSort>
+  <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+      <td mat-cell *matCellDef="let customer"> {{customer.firstName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+      <td mat-cell *matCellDef="let customer"> {{customer.lastName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="mail">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+    <td mat-cell *matCellDef="let customer"> {{customer.email}} </td>
+</ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openCustomerDetails(row.id)">
+  </tr>
+</table>
+<mat-paginator *ngIf="!this.noData" [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+
+<mat-card class="no-data-card" *ngIf="this.noData">
+  <i class="material-icons">report</i>
+  <span>No data available yet!</span>
+  <span>Add customers to view data.</span>
 </mat-card>
 
-
-
-<button (click)="openDialog()" class="add-user-button" mat-fab color="primary" matTooltip="Add a new customer">
-  <mat-icon>add</mat-icon>
+<button (click)="openAddCustomerDialog()" mat-fab color="primary" class="add-customer-btn" matTooltip="Add customer">
+      <mat-icon>add</mat-icon>
 </button>

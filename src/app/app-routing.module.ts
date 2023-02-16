@@ -12,6 +12,7 @@ import { DialogGuestUserComponent } from './components/dialog-guest-user/dialog-
 import { ImprintComponent } from './components/imprint/imprint.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { DialogEditNoteComponent } from './components/dialog-edit-note/dialog-edit-note.component';
+import { NoteDetailComponent } from './components/note-detail/note-detail.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full' },

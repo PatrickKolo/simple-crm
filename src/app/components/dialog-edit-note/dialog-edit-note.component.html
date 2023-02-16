@@ -8,7 +8,7 @@
        <div class="edit-note-container">
             <mat-form-field  appearance="outline">
                 <mat-label>Title</mat-label>
-                <input [disabled]="loading" [(ngModel)] = "notes.title"  matInput placeholder="Title">
+                <input [disabled]="loading" [(ngModel)] = "notes.title"  matInput placeholder="{{ notes.title }}">
                 <!-- <mat-hint>Please enter a name</mat-hint> -->
             </mat-form-field>
     
@@ -31,5 +31,6 @@
     <div mat-dialog-actions>
         <button  mat-button (click)="dialogRef.close()">Cancel</button>
         <button mat-button (click)="saveNote()" cdkFocusInitial>Save</button>
+        <button mat-button (click)="openDeleteNoteDialog()" cdkFocusInitial>Delete</button>
     </div>
     </div>

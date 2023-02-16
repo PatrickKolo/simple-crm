@@ -125,21 +125,21 @@ export class AuthService {
     return (user !== null) && (this.checkEmailVerification() !== false) ? true : false;
   }
 
-/**
-   * Checks if the user is a guest, if yes no email verification is needed
-   * @returns true || false
-   */
-checkEmailVerification() {
-  const user = JSON.parse(localStorage.getItem('user')!);
+  /**
+     * Checks if the user is a guest, if yes no email verification is needed
+     * @returns true || false
+     */
+  checkEmailVerification() {
+    const user = JSON.parse(localStorage.getItem('user')!);
 
-  if (this.loginAsGuest) {
-    return true;
-  } else if (user.emailVerified) {
-    return true;
-  } else {
-    return false;
+    if (this.loginAsGuest) {
+      return true;
+    } else if (user.emailVerified) {
+      return true;
+    } else {
+      return false;
+    }
   }
-}
 
 
   /**
@@ -205,9 +205,9 @@ checkEmailVerification() {
       this.changeDisplayName(guestDisplayName);
       this.afAuth.authState.subscribe((user) => {
         if (user) {
-            this.router.navigate(['dashboard']);
-          }
-        })
+          this.router.navigate(['dashboard']);
+        }
+      })
     }).catch(error => console.error(error))
   }
 
@@ -241,21 +241,21 @@ checkEmailVerification() {
   }
 
 
- /**
-   * Deletes the currently logged in user
-   */
- deleteUser() {
-  this.authProcessing = true;
+  /**
+    * Deletes the currently logged in user
+    */
+  deleteUser() {
+    this.authProcessing = true;
 
-  this.afAuth.currentUser.then((user) => {
-    this.firestoreService.deleteUser(user!.uid); // Delete the user from firestore
-    user!.delete().then(() => {
-      this.authProcessing = false;
+    this.afAuth.currentUser.then((user) => {
+      this.firestoreService.deleteUser(user!.uid); // Delete the user from firestore
+      user!.delete().then(() => {
+        this.authProcessing = false;
 
-      this.router.navigate(['']).then(() => {
-        window.location.reload();
-      });
-    }).catch((error) => {});
-  }).catch((error) => {});
-}
+        this.router.navigate(['']).then(() => {
+          window.location.reload();
+        });
+      }).catch((error) => { });
+    }).catch((error) => { });
+  }
 }

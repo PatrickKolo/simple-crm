@@ -15,8 +15,8 @@ export class DialogDeleteNoteComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  deleteCustomer() {
-    this.firestoreService.deleteCustomer(this.notesId);
+  deleteNote() {
+    this.firestoreService.deleteNotes(this.notesId);
     console.log('notesID', this.notesId)
 
     setTimeout(() => {

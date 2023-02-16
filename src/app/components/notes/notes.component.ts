@@ -28,15 +28,13 @@ export class NotesComponent implements OnInit {
     private firestore: AngularFirestore,
     private route: ActivatedRoute,
     public firestoreService: FirestoreService) {
-    this.getNotesIdFromURL();
+    
   }
 
   ngOnInit(): void {
-
-
     this.route.paramMap.subscribe(paramMap => {
       this.notesId = paramMap.get('id');
-    //  console.log('notesId ', this.notesId);
+      //  console.log('notesId ', this.notesId);
       this.getNotes();
     })
   }
@@ -47,35 +45,25 @@ export class NotesComponent implements OnInit {
       .collection('notes')
       .valueChanges({ idField: 'customIdName' })
       .subscribe((changes: any) => {
-         console.log('allNotes', changes);
+        console.log('allNotes', changes);
         this.allNotes = changes;
       });
   }
 
-  /**
- * Fetches the notesId from the URL parameter and stores it in the variable notesId
- */
-  getNotesIdFromURL() {
-    this.route.paramMap.subscribe(paramMap => {
-     // console.log('notesId is', this.notesId);
-      this.notesId = paramMap.get('id');
-      this.firestoreService.getCurrentNote(this.notesId);
-      this.firestoreService.currentNotesId = this.notesId;
-      
-    });
-  }
+
+ 
 
 
   editMenu() {
     const dialog = this.dialog.open(DialogEditNoteComponent)
-    dialog.componentInstance.notes = new Note(this.notes.toJSON());
+    dialog.componentInstance.notes = new Note(this.notes.NoteToJSON());
     dialog.componentInstance.notesId = this.notesId;
   }
 
 
   editNotesDetail() {
     const dialog = this.dialog.open(DialogEditNoteComponent)
-    dialog.componentInstance.notes = new Note(this.note.toJSON());
+    dialog.componentInstance.notes = new Note(this.note.NoteToJSON());
     dialog.componentInstance.notesId = this.notesId;
   }
 
@@ -89,8 +77,8 @@ export class NotesComponent implements OnInit {
 
 
   /**
-* Opens the notes delete dialog
-*/
+  * Opens the notes delete dialog
+  */
   openDeleteNoteDialog() {
     this.dialog.open(DialogDeleteNoteComponent);
   }

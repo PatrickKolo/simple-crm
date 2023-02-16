@@ -1,14 +1,5 @@
 <mat-card class="user-detail-header">
-    <button mat-icon-button [matMenuTriggerFor]="CustomerMenu" class="pin-right-upper-corner">
-        <mat-icon>more_vert</mat-icon>
-    </button>
-
-    <mat-menu #CustomerMenu="matMenu">
-        <button mat-menu-item (click)="editCustomerDetail()">Edit</button>
-        <button mat-menu-item (click)="openDeleteCustomerDialog()">Delete Customer</button>
-
-    </mat-menu>
-
+    <mat-icon class="delete-icon" (click)="openDeleteCustomerDialog()" aria-hidden="false" aria-label="Example home icon" fontIcon="home">delete</mat-icon>
     <img src="./assets/img/blank-user.png" alt="">
     <div class="user-details">
         <h2> {{ customer.firstName }} {{ customer.lastName }}</h2> <br>
@@ -17,10 +8,40 @@
 </mat-card>
 
 <mat-card class="mt-32">
+
+    <button mat-icon-button [matMenuTriggerFor]="CustomerMenu" class="pin-right-upper-corner">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #CustomerMenu="matMenu">
+
+        <button mat-menu-item (click)="editCustomerDetail()">Edit</button>
+    </mat-menu>
+
+    <mat-card-header>
+        <mat-card-title>Person</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="user-detail-adress">
+        <div class="name-container">
+            <p class="label">First Name:</p>
+            <p class="name">{{ customer.firstName }} </p>
+        </div>
+        <div class="name-container">
+            <p class="label">Last Name:</p>
+            <p class="name">{{ customer.lastName }} </p>
+        </div>
+        <div class="name-container">
+            <p class="label">Mail:</p>
+            <p class="name">{{ customer.email }} </p>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+
+<mat-card class="mt-32">
+
     <button mat-icon-button [matMenuTriggerFor]="addressMenu" class="pin-right-upper-corner">
         <mat-icon>more_vert</mat-icon>
     </button>
-
     <mat-menu #addressMenu="matMenu">
         <button mat-menu-item (click)="editMenu()">Edit</button>
     </mat-menu>
@@ -29,7 +50,17 @@
         <mat-card-title>Address</mat-card-title>
     </mat-card-header>
     <mat-card-content class="user-detail-adress">
-        <p> {{ customer.street }} </p>
-        <p> {{ customer.zipCode }} {{ customer.city }} </p>
+        <div class="name-container">
+            <p class="label">Street:</p>
+            <p class="name">{{ customer.street }} </p>
+        </div>
+        <div class="name-container">
+            <p class="label">Zip-Code:</p>
+            <p class="name">{{ customer.zipCode }} </p>
+        </div>
+        <div class="name-container">
+            <p class="label">City:</p>
+            <p class="name">{{ customer.city }} </p>
+        </div>
     </mat-card-content>
 </mat-card>

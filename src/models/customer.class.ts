@@ -24,7 +24,6 @@ export class Customer {
 
     public toJSON() {
         return {
-
             firstName: this.firstName,
             lastName: this.lastName,
             email: this.email,

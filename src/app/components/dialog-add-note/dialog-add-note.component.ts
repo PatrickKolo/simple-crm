@@ -24,18 +24,13 @@ export class DialogAddNoteComponent implements OnInit {
     this.note.date = this.date.getTime();
     console.log('Current note', this.note)
     this.loading = true;
-
-
     this.firestore
       .collection('notes')
-      .add(this.note.toJSON())
+      .add(this.note.NoteToJSON())
       .then((result: any) => {
         this.loading = false;
         console.log('Adding note finished', result)
         this.dialogRef.close();
       });
-
   }
-
-
 }

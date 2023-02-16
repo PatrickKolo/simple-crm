@@ -39,8 +39,8 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DialogGuestUserComponent } from './components/dialog-guest-user/dialog-guest-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { DialogDeleteCustomerComponent } from './components/dialog-delete-customer/dialog-delete-customer.component';
 import { DialogAccountDetailsComponent } from './components/dialog-account-details/dialog-account-details.component';
 import { DialogEditAccountComponent } from './components/dialog-edit-account/dialog-edit-account.component';
@@ -48,9 +48,13 @@ import { DialogDeleteAccountComponent } from './components/dialog-delete-account
 import { ImprintComponent } from './components/imprint/imprint.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { DialogAddNoteComponent } from './components/dialog-add-note/dialog-add-note.component';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { DialogEditNoteComponent } from './components/dialog-edit-note/dialog-edit-note.component';
 import { DialogDeleteNoteComponent } from './components/dialog-delete-note/dialog-delete-note.component';
+import { NoteDetailComponent } from './components/note-detail/note-detail.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -78,12 +82,16 @@ import { DialogDeleteNoteComponent } from './components/dialog-delete-note/dialo
     DialogAddNoteComponent,
     DialogEditNoteComponent,
     DialogDeleteNoteComponent,
+    NoteDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     // Angulr Material - START 
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
@@ -113,7 +121,8 @@ import { DialogDeleteNoteComponent } from './components/dialog-delete-note/dialo
 
   ],
   providers: [
-    { provide: MatDialogRef,
+    {
+      provide: MatDialogRef,
       useValue: {}
     }
   ],

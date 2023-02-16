@@ -1,36 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Note } from 'src/models/notes.class';
 import { FirestoreService } from '../shared/services/firestore.service';
-import { DialogDeleteNoteComponent } from 'src/app/components/dialog-delete-note/dialog-delete-note.component';
-import { Router } from '@angular/router';
-
+import { Note } from 'src/models/notes.class';
 
 @Component({
-  selector: 'app-dialog-edit-note',
-  templateUrl: './dialog-edit-note.component.html',
-  styleUrls: ['./dialog-edit-note.component.scss']
+  selector: 'app-note-detail',
+  templateUrl: './note-detail.component.html',
+  styleUrls: ['./note-detail.component.scss']
 })
-export class DialogEditNoteComponent implements OnInit {
-  loading = false;
-  notes = new Note();
-  allNotes = [];
+export class NoteDetailComponent implements OnInit {
+
   notesId: any = '';
+  notes: Note = new Note();
 
   constructor(
     public dialog: MatDialog,
-    public dialogRef: MatDialogRef<DialogEditNoteComponent>, 
-    private firestore: AngularFirestore,
     private route: ActivatedRoute,
-    public router: Router,
-    public firestoreService: FirestoreService) {
+    private firestore: AngularFirestore,
+    public firestoreService: FirestoreService
+  ) { 
     this.getNotesIdFromURL();
   }
 
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.route.paramMap.subscribe(paramMap => {
       this.notesId = paramMap.get('nId');
       console.log('got Id ', this.notesId);
@@ -63,24 +58,11 @@ export class DialogEditNoteComponent implements OnInit {
   }
 
 
-  saveNote() {
-    this.loading = true;
-    this.firestore
-      .collection('notes')
-      .doc(this.notesId)
-      .update(this.notes.NoteToJSON())
-      .then(() => {
-        this.loading = false;
-        this.router.navigate(['notes']);
-      })
+  openDeleteNoteDialog(){
+
   }
 
- 
-  /**
-    * Opens the customer delete dialog
-    */
-  openDeleteNoteDialog() {
-    this.dialog.open(DialogDeleteNoteComponent);
+  editNoteDetail(){
+
   }
 }
-

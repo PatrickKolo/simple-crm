@@ -1,26 +1,25 @@
 <div class="main-container">
-<mat-accordion class="all-notes-container" *ngFor="let notes of allNotes" >
-    <mat-expansion-panel class="note" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-            <mat-panel-title class="note-title">
-                {{ notes['title'] }}
-            </mat-panel-title>
-            <mat-panel-description>
-                {{ notes['date'] | date }} 
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>{{ notes['description'] }}</p>
-        <button mat-icon-button [matMenuTriggerFor]="CustomerMenu" class="pin-right-upper-corner">
-            <mat-icon>more_vert</mat-icon>
-        </button>
-    
-        <mat-menu #CustomerMenu="matMenu">
-            <button mat-menu-item [routerLink]="['/notes/' + notes['customIdName']]" >Edit</button>
-            <button mat-menu-item (click)="openDeleteNoteDialog()">Delete</button>
-    
-        </mat-menu>
-    </mat-expansion-panel>
-</mat-accordion>
+    <mat-accordion class="all-notes-container" *ngFor="let notes of allNotes">
+        <mat-expansion-panel class="note" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="note-title">
+                    {{ notes['title'] }}
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{ notes['date'] | date }}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p class="description-box">{{ notes['description'] }}</p>
+            <button mat-icon-button [matMenuTriggerFor]="CustomerMenu" class="pin-right-upper-corner">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+
+            <mat-menu #CustomerMenu="matMenu">
+                <button mat-menu-item [routerLink]="['/notes/' + notes['customIdName']]">Edit note</button>
+
+            </mat-menu>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
 
 <button (click)="openDialogAddNote()" class="add-user-button" mat-fab color="primary" matTooltip="Add a new note">
