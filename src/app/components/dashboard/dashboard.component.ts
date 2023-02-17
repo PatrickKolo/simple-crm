@@ -6,6 +6,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserComponent } from '../user/user.component';
 import { Customer } from 'src/models/customer.class';
 import { Note } from 'src/models/notes.class';
+import { Router } from '@angular/router';
 
 
 
@@ -31,6 +32,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private firestore: AngularFirestore,
+    private router: Router
   ) {
     setInterval(() => {
       this.time = new Date();
@@ -77,5 +79,14 @@ export class DashboardComponent implements OnInit {
     }
   }
   firebaseSusbscribing() {
+  }
+
+
+  openNotes(){
+    this.router.navigateByUrl('main/notes');
+  }
+
+  openCustomers(){
+    this.router.navigateByUrl('main/user');
   }
 }

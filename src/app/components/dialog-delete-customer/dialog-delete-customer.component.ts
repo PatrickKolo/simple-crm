@@ -30,7 +30,7 @@ export class DialogDeleteCustomerComponent implements OnInit {
    */
   redirect() {
     this.dialogRef.close();
-    this.router.navigateByUrl('user');
+    this.router.navigateByUrl('main/user');
   }
 
 }

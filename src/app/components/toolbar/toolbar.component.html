@@ -1,0 +1,69 @@
+<mat-drawer-container autosize>
+    <mat-drawer #drawer mode="side" [opened]="true">
+        <div class="sidenav-logo-container mat-toolbar-row">
+            <img src="./assets/img/logo-scrm.png" alt="CRM Logo">
+        </div>
+        <mat-nav-list>
+            <mat-list-item role="listitem">
+                <a (click)="this.toggleNav()" routerLink="dashboard" title="Dashboard">
+                    <mat-icon class="nav-icon">dashboard</mat-icon>
+                    <span>Dashboard</span>
+                </a>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <a (click)="this.toggleNav()" routerLink="user" title="Customers">
+                    <mat-icon class="nav-icon">person</mat-icon>
+                    <span>Customers</span>
+                </a>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+              <a (click)="this.toggleNav()" routerLink="notes" title="Notes">
+                  <mat-icon class="nav-icon">checklist</mat-icon>
+                  <span>Notes</span>
+              </a>
+          </mat-list-item>
+            <mat-list-item role="listitem">
+                <a (click)="this.authService.SignOut(); this.toggleNav()" title="Log Out">
+                    <mat-icon class="nav-icon">logout</mat-icon>
+                    <span>Log Out</span>
+                </a>
+            </mat-list-item>
+            <div class="legal-notice-wrapper">
+                <a class="auth-link" routerLink="imprint" >Imprint | Privacy Policy</a>
+            </div>
+        </mat-nav-list>
+    </mat-drawer>
+    <div class="example-sidenav-content">
+        <mat-toolbar color="primary">
+            <div class="toolbar-left">
+                <button type="button" mat-button (click)="drawer.toggle()" title="Toggle Menu">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <span class="hide-mobile">Simple CRM</span>
+            </div>
+            <div class="toolbar-right" *ngIf="authService.userData as user">
+                <span>{{ user.displayName }}</span>
+                <button mat-button [matMenuTriggerFor]="menu" title="User profile">
+                    <img class="profile-picture" src="./assets/img/blank-user.png" alt="{{ user.displayName }}" />
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button (click)="this.openUserDetailsDialog()" mat-menu-item>
+                        <mat-icon>person</mat-icon>
+                        <span>Show User Details</span>
+                    </button>
+                    <button (click)="this.openEditUserDialog()" mat-menu-item>
+                        <mat-icon>edit</mat-icon>
+                        <span>Edit User</span></button>
+                    <button (click)="this.authService.SignOut()" mat-menu-item>
+                        <mat-icon>logout</mat-icon>
+                        <span>Log Out</span>
+                    </button>
+                </mat-menu>
+            </div>
+
+        </mat-toolbar>
+        <div class="router-outlet-container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</mat-drawer-container>

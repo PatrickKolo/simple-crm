@@ -1,5 +1,5 @@
 <div class="all-cards-container">
-    <mat-card class="card firstCard">
+    <mat-card class="card firstCard mobile-card">
         <mat-card-content>
             <p> Welcome to simple-CRM</p>
         </mat-card-content>
@@ -7,7 +7,7 @@
 
     <div class="card-container">
 
-        <mat-card routerLink="/notes/"  class="card fourthCard">
+        <mat-card routerLink="main/notes/" (click)="openNotes()"  class="card fourthCard">
             <mat-card-content>
                 <div class="CustomerAmount">
                     <p>You have</p>
@@ -25,7 +25,7 @@
             </mat-card-content>
         </mat-card>
 
-        <mat-card routerLink="/user/" class="card fourthCard">
+        <mat-card (click)="openCustomers()" class="card fourthCard">
             <mat-card-content>
                 <div class="CustomerAmount">
                     <p>You have</p>

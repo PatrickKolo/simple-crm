@@ -1,6 +1,16 @@
-.all-cards-container{
-    width: 80%;
-    margin-left: 120px;
+.all-cards-container {
+    margin: 100px;
+
+    @media screen and (max-width: 1500px) {
+        margin: 50px;
+    }
+
+    @media screen and (max-width: 1300px) {
+        margin-top: 50px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
 }
 
 
@@ -8,85 +18,117 @@
     background: #3f51b5;
     border-radius: 14px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     color: white;
     margin: 10px;
     padding: 25px;
-
 }
 
-.firstCard{
+.firstCard {
     display: flex;
     justify-content: center;
     align-items: center;
-    p{
+
+    
+
+    p {
         font-size: 42px !important;
         font-weight: 700 !important;
         padding: 15px;
         letter-spacing: 3px;
+
+        @media screen and (max-width: 1150px) {
+            font-size: 35px !important;
+        }
+
+        @media screen and (max-width: 1000px) {
+            font-size: 26px !important;
+        }
+
+
     }
 }
 
-.card-container{
+.mobile-card{
+
+    @media screen and (max-width: 500px) {
+       display: none;
+    }
+
+}
+
+.card-container {
     display: flex;
+
+    @media screen and (max-width: 1000px) {
+        flex-direction: column;
+    }
 }
 
 
-.secondCard{
+.secondCard {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 33%;
+    @media screen and (max-width: 1000px) {
+       width: 100%;
+    }
 }
 
-
-
-
-
-.thirdCard{
+.thirdCard {
     display: flex;
     justify-content: center;
     width: 33%;
+    @media screen and (max-width: 1000px) {
+        width: unset;
+     }
 }
 
 
-.fourthCard{
+.fourthCard {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 33%;
     cursor: pointer;
-    .CustomerAmount{
+
+    @media screen and (max-width: 1000px) {
+        width: unset;
+     }
+
+    .CustomerAmount {
         font-size: 22px !important;
         font-family: 700 !important;
-        p{
+
+        p {
             text-align: center;
             padding-top: 10px;
             padding-bottom: 10px;
         }
-    } 
+    }
 }
 
-.number{
+.number {
     font-size: 55px;
+
     &:hover {
         transform: scale(1.3);
     }
-
 }
 
-.greeting-box{
-    p{
+.greeting-box {
+    p {
         padding-top: 15px;
     }
 }
 
-
-
-mat-grid-tile-content{
+mat-grid-tile-content {
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
 }
 
 .tile1 {
@@ -101,27 +143,38 @@ mat-grid-tile-content{
     gap: 160px;
     font-size: 32px !important;
     font-family: 700 !important;
-   
-}
 
-.context p{
-    font-size: 32px !important;
-    display: flex;
-    align-items: center;
-}
-
-.logo-container img{
-    height: 110px;
-}
-
-@media (max-width: 1310px) {
-
-    .context{
+    @media screen and (max-width: 1310px) {
         padding: 0;
     }
 
-    .context p{
-    font-size:30px !important;
+    @media screen and (max-width: 1000px) {
+        flex-direction: column;
+        gap: 0;
+    }
 }
+
+.context p {
+    font-size: 32px !important;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 1450px) {
+        font-size: 25px !important;
+    }
+
+    @media (max-width: 1310px) {
+        font-size: 20px !important;
+    }
+
+
+}
+
+.logo-container img {
+    height: 110px;
+
+    @media (max-width: 1310px) {
+        height: 90px;
+    }
 
 }

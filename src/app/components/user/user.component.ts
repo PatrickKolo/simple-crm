@@ -89,7 +89,7 @@ export class UserComponent implements OnInit {
    * @param customerId The unique firebase document id
    */
   openCustomerDetails(customerId: string) {
-    this.router.navigateByUrl('/customer/' + customerId);
+    this.router.navigateByUrl('main/customer/' + customerId);
   }
 
 

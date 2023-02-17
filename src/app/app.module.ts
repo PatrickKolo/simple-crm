@@ -55,6 +55,10 @@ import { NoteDetailComponent } from './components/note-detail/note-detail.compon
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { DialogLoggedInComponent } from './components/dialog-logged-in/dialog-logged-in.component';
+import { MainComponent } from './components/main/main.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { MatListModule } from '@angular/material/list';
 
 
 
@@ -83,14 +87,18 @@ import { MatTableModule } from '@angular/material/table';
     DialogEditNoteComponent,
     DialogDeleteNoteComponent,
     NoteDetailComponent,
+    DialogLoggedInComponent,
+    MainComponent,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     // Angulr Material - START 
-    MatPaginatorModule,
+    MatPaginatorModule, 
     MatSortModule,
+    MatListModule,
     MatTableModule,
     MatToolbarModule,
     MatSidenavModule,

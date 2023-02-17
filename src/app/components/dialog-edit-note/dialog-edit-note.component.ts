@@ -18,6 +18,7 @@ export class DialogEditNoteComponent implements OnInit {
   notes = new Note();
   allNotes = [];
   notesId: any = '';
+  date!: Date;
 
   constructor(
     public dialog: MatDialog,

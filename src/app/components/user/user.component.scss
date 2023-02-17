@@ -46,7 +46,15 @@ mat-paginator {
 }
 
 .firstName-col{
+    color: green;
     th{
         font-size: 18px;
+    }
+}
+
+.mail-col{
+    color: green;
+    @media screen and (max-width: 420px) {
+        display: none;
     }
 }

@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from 'src/app/components/dialog-add-user/dialog-add-user.component';
 import { ErrorDialogComponent } from 'src/app/components/error-dialog/error-dialog.component';
 import { FirestoreService } from './firestore.service';
+import { DialogLoggedInComponent } from '../../dialog-logged-in/dialog-logged-in.component';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,29 @@ export class AuthService {
   }
 
 
+   /**
+   * Checks if the user is already logged in
+   * Displays a forwarding dialog after a short delay if the user is logged in
+   */
+   checkAlreadyLoggedIn() {
+    this.afAuth.onAuthStateChanged((user) => {
+      if (user && user.emailVerified && !user.isAnonymous && !this.authProcessing) {
+        setTimeout(() => {
+          this.openAlreadyLoggedInDialog();
+        }, 1000);
+      }
+    });
+  }
+
+
+  /**
+   * Opens the already logged in dialog
+   */
+  openAlreadyLoggedInDialog() {
+    this.dialog.open(DialogLoggedInComponent);
+  }
+
+
   /**
    * Sign in with email/password
    * @param email 
@@ -62,7 +86,7 @@ export class AuthService {
         this.SetUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
           if (user) {
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['main/dashboard']);
           }
         });
       })
@@ -155,7 +179,11 @@ export class AuthService {
    */
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then(() => {
-      this.router.navigate(['dashboard']);
+      this.afAuth.authState.subscribe((user) => {
+        if (user) {
+          this.router.navigate(['main/dashboard']);
+        }
+      })
     });
   }
 
@@ -168,13 +196,15 @@ export class AuthService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['main/dashboard']);
         this.SetUserData(result.user);
       })
       .catch((error) => {
         window.alert(error);
       });
   }
+
+ 
 
 
   /**
@@ -211,7 +241,7 @@ export class AuthService {
       this.changeDisplayName(guestDisplayName);
       this.afAuth.authState.subscribe((user) => {
         if (user) {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['main/dashboard']);
         }
       })
     }).catch(error => console.error(error))

@@ -13,22 +13,33 @@ import { ImprintComponent } from './components/imprint/imprint.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { DialogEditNoteComponent } from './components/dialog-edit-note/dialog-edit-note.component';
 import { NoteDetailComponent } from './components/note-detail/note-detail.component';
+import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full' },
-  {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-  {path: 'user', component: UserComponent, canActivate:[AuthGuard]},
-  {path: 'customer/:id', component: UserDetailComponent, canActivate:[AuthGuard]},
-  {path: 'login', component: LoginComponent},
-  {path: 'signin', component: SignInComponent},
-  {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'veryfy-email', component: VerifyEmailComponent},
-  {path: 'dialog-guest', component: DialogGuestUserComponent},
-  {path: 'imprint', component: ImprintComponent},
-  {path: 'notes', component: NotesComponent},
-  {path: 'notes/:nId', component: DialogEditNoteComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  // {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
+  // {path: 'user', component: UserComponent, canActivate:[AuthGuard]},
+  // {path: 'customer/:id', component: UserDetailComponent, canActivate:[AuthGuard]},
+  { path: 'login', component: LoginComponent },
+  { path: 'signin', component: SignInComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'veryfy-email', component: VerifyEmailComponent },
+  { path: 'dialog-guest', component: DialogGuestUserComponent },
 
-  
+  {
+    path: 'main',
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'user', component: UserComponent },
+      { path: 'customer/:id', component: UserDetailComponent },
+      { path: 'imprint', component: ImprintComponent },
+      { path: 'notes', component: NotesComponent },
+      { path: 'notes/:nId', component: DialogEditNoteComponent },
+    ],
+    component: MainComponent, canActivate: [AuthGuard]
+  },
+
+
 
 ];
 

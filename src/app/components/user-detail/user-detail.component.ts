@@ -7,6 +7,7 @@ import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-a
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 import { DialogDeleteCustomerComponent } from '../dialog-delete-customer/dialog-delete-customer.component';
 import { FirestoreService } from 'src/app/components/shared/services/firestore.service'
+import { UtilsService } from '../shared/services/utils.service';
 
 
 @Component({
@@ -18,12 +19,14 @@ export class UserDetailComponent implements OnInit {
 
   customersId: any = '';
   customer: Customer = new Customer();
+  birthDate!: Date;
 
 
   constructor(public dialog: MatDialog,
     private route: ActivatedRoute,
     private firestore: AngularFirestore,
-    public firestoreService: FirestoreService) {
+    public firestoreService: FirestoreService,
+    public utils: UtilsService) {
     this.getCustomerIdFromURL();
   }
 

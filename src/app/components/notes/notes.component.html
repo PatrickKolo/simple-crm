@@ -5,8 +5,8 @@
                 <mat-panel-title class="note-title">
                     {{ notes['title'] }}
                 </mat-panel-title>
-                <mat-panel-description>
-                    {{ notes['date'] | date }}
+                <mat-panel-description *ngIf="notes['date']">
+                    {{ this.utils.convertTimestampToDate(notes['date']) }}
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <p class="description-box">{{ notes['description'] }}</p>
@@ -15,7 +15,7 @@
             </button>
 
             <mat-menu #CustomerMenu="matMenu">
-                <button mat-menu-item [routerLink]="['/notes/' + notes['customIdName']]">Edit note</button>
+                <button mat-menu-item (click)="editMenu(notes['customIdName']) ">Edit note</button>
                 <!-- <button mat-menu-item (click)=" editMenu(notes['customIdName'])">Edit</button>
                 <button mat-menu-item (click)="openDeleteNoteDialog()">Delete</button> -->
 

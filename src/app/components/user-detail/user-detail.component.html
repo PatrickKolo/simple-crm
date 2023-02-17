@@ -30,6 +30,10 @@
             <p class="name">{{ customer.lastName }} </p>
         </div>
         <div class="name-container">
+            <p class="label">Date of birth:</p>
+            <p class="name">{{ customer.birthDate | date }} </p>
+        </div>
+        <div class="name-container">
             <p class="label">Mail:</p>
             <p class="name">{{ customer.email }} </p>
         </div>
