@@ -1,36 +1,41 @@
-<div class="dialog-container">
-    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-      
-    <h1 mat-dialog-title>Edit Note</h1>
-    
-    <div mat-dialog-content>
-    
-       <div class="edit-note-container">
-            <mat-form-field  appearance="outline">
-                <mat-label>Title</mat-label>
-                <input [disabled]="loading" [(ngModel)] = "notes.title"  matInput placeholder="{{ notes.title }}">
-                <!-- <mat-hint>Please enter a name</mat-hint> -->
-            </mat-form-field>
-    
-            <mat-form-field appearance="outline">
-                <mat-label>Description</mat-label>
-                <input class="note-descritpion-edit-input" [disabled]="loading" [(ngModel)] = "notes.description"  matInput placeholder="Description">
-                <!-- <mat-hint>Please enter a name</mat-hint> -->
-            </mat-form-field>
-      
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Date</mat-label>
-                <input [disabled]="loading" [(ngModel)] = "notes.date"   matInput placeholder="Date" [matDatepicker]="picker1">
-                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
-                <!-- <mat-hint>Please enter a date</mat-hint> -->
-            </mat-form-field>
+<div class="main-container">
+    <div class="dialog-container">
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+        <h1 mat-dialog-title>Edit Note</h1>
+
+        <div mat-dialog-content>
+
+            <div class="edit-note-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="notes.title" matInput placeholder="{{ notes.title }}">
+                    <!-- <mat-hint>Please enter a name</mat-hint> -->
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <input class="note-descritpion-edit-input" [disabled]="loading" [(ngModel)]="notes.description"
+                        matInput placeholder="Description">
+                    <!-- <mat-hint>Please enter a name</mat-hint> -->
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Date</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="notes.date" matInput placeholder="Date"
+                        [matDatepicker]="picker1">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                    <!-- <mat-hint>Please enter a date</mat-hint> -->
+                </mat-form-field>
+            </div>
+
         </div>
-        
+        <div mat-dialog-actions>
+            <button mat-button (click)="dialogRef.close()">Cancel</button>
+            <button mat-button (click)="saveNote()" cdkFocusInitial>Save</button>
+            <button mat-button (click)="openDeleteNoteDialog()" cdkFocusInitial>Delete</button>
+        </div>
     </div>
-    <div mat-dialog-actions>
-        <button  mat-button (click)="dialogRef.close()">Cancel</button>
-        <button mat-button (click)="saveNote()" cdkFocusInitial>Save</button>
-        <button mat-button (click)="openDeleteNoteDialog()" cdkFocusInitial>Delete</button>
-    </div>
-    </div>
+
+</div>
