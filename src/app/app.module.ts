@@ -8,7 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { UserComponent } from './components/user/user.component';
+import { UserComponent } from './components/customer/user.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -27,10 +27,10 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { DialogAddUserComponent } from './components/dialog-add-user/dialog-add-user.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { DialogAddUserComponent } from './components/dialog-add-customer/dialog-add-user.component';
+import { UserDetailComponent } from './components/customer-detail/user-detail.component';
 import { DialogEditAddressComponent } from './components/dialog-edit-address/dialog-edit-address.component';
-import { DialogEditUserComponent } from './components/dialog-edit-user/dialog-edit-user.component';
+import { DialogEditUserComponent } from './components/dialog-edit-customer/dialog-edit-user.component';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { LoginComponent } from './components/login/login.component';
@@ -59,6 +59,7 @@ import { DialogLoggedInComponent } from './components/dialog-logged-in/dialog-lo
 import { MainComponent } from './components/main/main.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MatListModule } from '@angular/material/list';
+
 
 
 
@@ -92,11 +93,29 @@ import { MatListModule } from '@angular/material/list';
     ToolbarComponent,
   ],
   imports: [
+    // RouterModule.forRoot([
+    //   { path: '', pathMatch: 'full', redirectTo: 'main/dashboard' },
+    //   {
+    //     path: 'dashboard',
+    //     component: DashboardComponent,
+    //     data: { animation: 'openDashboard' }
+    //   },
+    //   {
+    //     path: 'user',
+    //     component: UserComponent,
+    //     data: { animation: 'openUser' }
+    //   },
+    //   {
+    //     path: 'notes',
+    //     component: NotesComponent,
+    //     data: { animation: 'openNotes' }
+    //   }
+    // ]),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     // Angulr Material - START 
-    MatPaginatorModule, 
+    MatPaginatorModule,
     MatSortModule,
     MatListModule,
     MatTableModule,

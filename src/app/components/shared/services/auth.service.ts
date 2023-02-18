@@ -8,7 +8,7 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogAddUserComponent } from 'src/app/components/dialog-add-user/dialog-add-user.component';
+import { DialogAddUserComponent } from 'src/app/components/dialog-add-customer/dialog-add-user.component';
 import { ErrorDialogComponent } from 'src/app/components/error-dialog/error-dialog.component';
 import { FirestoreService } from './firestore.service';
 import { DialogLoggedInComponent } from '../../dialog-logged-in/dialog-logged-in.component';

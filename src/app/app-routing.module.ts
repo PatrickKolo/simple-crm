@@ -1,8 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
-import { UserComponent } from './components/user/user.component';
+import { UserDetailComponent } from './components/customer-detail/user-detail.component';
+import { UserComponent } from './components/customer/user.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';

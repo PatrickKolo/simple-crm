@@ -2,7 +2,7 @@ mat-form-field {
     width: 100%;
 }
 
-.mat-header-cell{
+.mat-header-cell {
     font-size: 18px;
 }
 
@@ -17,6 +17,7 @@ mat-paginator {
 
 .mat-row {
     cursor: pointer;
+
     &:hover {
         background-color: rgba(0, 0, 0, 0.04);
     }
@@ -33,6 +34,7 @@ mat-paginator {
     align-items: center;
     gap: 8px;
     padding: 32px 64px;
+
     i {
         color: var(--gray-col);
         font-size: 56px;
@@ -45,16 +47,16 @@ mat-paginator {
     bottom: 32px;
 }
 
-.firstName-col{
-    color: green;
-    th{
+.firstName-col {
+    th {
         font-size: 18px;
     }
 }
 
-.mail-col{
-    color: green;
-    @media screen and (max-width: 420px) {
+.mail-col {
+
+    @media screen and (max-width: 380px) {
         display: none;
     }
+
 }

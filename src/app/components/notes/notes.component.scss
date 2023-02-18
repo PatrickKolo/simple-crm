@@ -12,6 +12,12 @@
     position: absolute;
     right: 56px;
     bottom: 65px;
+
+    @media screen and (max-width: 500px) {
+        position: fixed;
+        right: 24px;
+        bottom: 40px;
+    }
 }
 
 .pin-right-upper-corner {
@@ -24,7 +30,7 @@
     margin: 18px;
     width: 350px;
     min-height: 100px;
-    
+
     @media screen and (max-width: 380px) {
         width: 280px;
     }
@@ -48,7 +54,7 @@
     padding-right: 20px;
 }
 
-.mat-content{
+.mat-content {
     @media screen and (max-width: 380px) {
         flex-direction: column;
         padding-top: 5px;

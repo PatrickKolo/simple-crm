@@ -1,11 +1,17 @@
-.user-detail-header{
+.user-detail-header {
     min-height: 120px;
-    background-color: rgb(107,107,107);
+    background-color: rgb(107, 107, 107);
     color: white;
     display: flex;
     align-items: flex-end;
 
-    img{
+    @media screen and (max-width: 350px) {
+        flex-direction: column-reverse;
+        align-items: baseline;
+        justify-content: center;
+    }
+
+    img {
         height: 90px;
         width: 90px;
         border-radius: 100%;
@@ -13,7 +19,7 @@
     }
 }
 
-.user-details{
+.user-details {
     margin-left: 32px;
     display: flex;
     flex-direction: column;
@@ -21,42 +27,52 @@
     justify-content: center;
     height: 90px;
 
-    h2{
+    @media screen and (max-width: 350px) {
+        margin-left: 20px;
+    }
+
+    h2 {
         margin-bottom: -16px;
         font-size: 28px;
     }
 }
 
-.user-detail-adress{
+.user-detail-adress {
     padding-left: 18px;
 
 }
 
-.pin-right-upper-corner{
+.pin-right-upper-corner {
     position: absolute;
     right: 0;
     top: 0;
 }
 
-.name-container{
+.name-container {
     display: flex;
     position: relative;
     // border-bottom: 1px solid lightgray;
     // padding-top: 5px;
 }
 
-.label{
+.label {
     font-weight: 500;
 }
 
-.name{
+.name {
     position: absolute;
     left: 100px;
 }
 
-.delete-icon{
+.delete-icon {
     position: absolute;
     right: 10px;
     bottom: 15px;
     cursor: pointer;
+}
+
+mat-cards {
+    @media (max-width: 500px) {
+        margin: 10px;
+    }
 }

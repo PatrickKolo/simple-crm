@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Customer } from 'src/models/customer.class';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
-import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
+import { DialogEditUserComponent } from '../dialog-edit-customer/dialog-edit-user.component';
 import { DialogDeleteCustomerComponent } from '../dialog-delete-customer/dialog-delete-customer.component';
 import { FirestoreService } from 'src/app/components/shared/services/firestore.service'
 import { UtilsService } from '../shared/services/utils.service';

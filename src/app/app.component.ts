@@ -5,19 +5,26 @@ import { AuthService } from "./components/shared/services/auth.service";
 import { MatDialog } from '@angular/material/dialog';
 
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+
 })
+
+
 export class AppComponent {
 
-  
 
   constructor(public authService: AuthService,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    ) {
     
   }
+
+
 
   /**
    * Opens the user details dialog
@@ -32,4 +39,6 @@ export class AppComponent {
   openEditUserDialog() {
     this.dialog.open(DialogEditAccountComponent);
   }
+
+  
 }

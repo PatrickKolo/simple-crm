@@ -3,7 +3,7 @@ import { AuthService } from "../shared/services/auth.service";
 import { FirestoreService } from 'src/app/components/shared/services/firestore.service';
 import { User } from 'src/models/user.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { UserComponent } from '../user/user.component';
+import { UserComponent } from '../customer/user.component';
 import { Customer } from 'src/models/customer.class';
 import { Note } from 'src/models/notes.class';
 import { Router } from '@angular/router';
