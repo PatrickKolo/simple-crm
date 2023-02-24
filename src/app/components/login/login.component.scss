@@ -1,4 +1,8 @@
 .container {
+    background-image: url("../../../assets/img/bg_grey.png") ;
+    height: 100vh;
+    
+    background-size: cover;
     position: relative;
     min-height: 80vh;
     display: flex;
